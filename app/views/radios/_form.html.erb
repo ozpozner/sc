@@ -1,0 +1,68 @@
+<%= form_for @radio do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :location_id %><br />
+    <%= f.number_field :location_id %>
+  </p>
+  <p>
+    <%= f.label :mac %><br />
+    <%= f.text_field :mac %>
+  </p>
+  <p>
+    <%= f.label :sn %><br />
+    <%= f.text_field :sn %>
+  </p>
+  <p>
+    <%= f.label :ip %><br />
+    <%= f.text_field :ip %>
+  </p>
+  <p>
+    <%= f.label :devtype %><br />
+    <%= f.number_field :devtype %>
+  </p>
+  <p>
+    <%= f.label :hwver %><br />
+    <%= f.text_field :hwver %>
+  </p>
+  <p>
+    <%= f.label :swver %><br />
+    <%= f.text_field :swver %>
+  </p>
+  <p>
+    <%= f.label :contact %><br />
+    <%= f.text_field :contact %>
+  </p>
+  <p>
+    <%= f.label :last_update %><br />
+    <%= f.datetime_select :last_update %>
+  </p>
+  <p>
+    <%= f.label :installed %><br />
+    <%= f.check_box :installed %>
+  </p>
+  <p>
+    <%= f.label :airlink_id %><br />
+    <%= f.number_field :airlink_id %>
+  </p>
+  <p>
+    <%= f.label :lanlink_id %><br />
+    <%= f.number_field :lanlink_id %>
+  </p>
+  <p>
+    <%= f.label :network_id %><br />
+    <%= f.number_field :network_id %>
+  </p>
+  <p>
+    <%= f.label :sb_mask %><br />
+    <%= f.text_field :sb_mask %>
+  </p>
+  <p>
+    <%= f.label :dgw %><br />
+    <%= f.text_field :dgw %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

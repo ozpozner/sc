@@ -1,58 +1,66 @@
 <% title "Location" %>
 
 
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@location.latitude}%2C#{@location.longitude}" %>
-
-<h3>Nearby locations</h3>
-<ul>
-<table border="1" align="center"> 
-<tr bgcolor="#cccccc" align="center">
-  <th> Goto</th>
-  <th> Title </th>
-  <th> Address </th>
-  <th> Distance </th>
-  <th> Bearing </th>
-</tr> 
-<% for location in @location.nearbys(10) %>
-  <tr align="center">
-    <td></td>
-    <td><%= link_to location.title, location %> </td>
-    <td><%= link_to location.address, location %> </td>
-    <td><%= location.distance.round(1.001){:km} %> Km </td>
-    <td><%= location.bearing %></td>
-    </tr>
-<% end %>
+<h3 align=center>Location's info</h3>
+<h3 align=center><%= @location.title %></h3>
+<table border=1 align=center>
+  <tr align=center bgcolor="#cccccc">
+    <th> Address </th>
+    <th> Latitude </th>
+    <th> Longitude </th>
+  </tr>
+  <tr align=center>
+    <td><%= @location.address %></td>
+    <td><%= @location.latitude %></td>
+    <td><%= @location.longitude %></td>
+  </tr>  
 </table>
-</ul>
-
-<h3>Locations info</h3>
-<p>
-  <strong>Address:</strong>
-  <%= @location.address %>
-</p>
-<p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
-</p>
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
-<p>
-  <strong>Lastvisit:</strong>
-  <%= @location.lastvisit %>
-</p>
-<p>
-  <strong>Radius:</strong>
-  <%= @location.radius %>
-</p>
-<p>
-  <strong>Site Type:</strong>
-  <%= @location.sitetype %>
-</p>
+<br>
+<table border=1 align=center>
+  <tr align=center bgcolor="#cccccc">
+    <th> Radius </th>
+    <th> Sitetype </th>
+    <th> Last visit </th>
+  </tr>
+  <tr align=center>
+    <td><%= @location.radius %></td>
+    <td><%= @location.sitetype %></td>
+    <td><%= @location.lastvisit %></td>
+  </tr>  
+</table>
 
 <p>
   <%= link_to "Edit", edit_location_path(@location) %> |
   <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", locations_path %>
 </p>
+
+
+<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&
+markers=#{@location.latitude}%2C#{@location.longitude}" %>
+
+
+<% if @location.nearbys(10)!=nil then %>
+  <h3>Nearby locations</h3>
+  <ul>
+  <table border="1" align="center"> 
+  <tr bgcolor="#cccccc" align="center">
+    <th> Action</th>
+    <th> Title </th>
+    <th> Address </th>
+    <th> Distance </th>
+    <th> Bearing </th>
+  </tr> 
+  <% for location in @location.nearbys(10) %>
+  <tr align="center">
+    <td><%= link_to "Test Drive to", home_path, 
+                                class: "btn btn-small btn-primary" %></td>
+    <td><%= link_to location.title, location %> </td>
+    <td><%= link_to location.address, location %> </td>
+    <td><%= location.distance.round(4){:km} %> Km </td>
+    <td><%= "#{location.bearing}[#{Geocoder::Calculations.compass_point(location.bearing)}]" %></td>
+    </tr>
+  <% end %>
+  </table>
+  </ul>
+<% end %>

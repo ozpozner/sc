@@ -1,0 +1,4 @@
+ a = ActionController::Base::ApplicationController.new
+ s = ActionController::Base::SettingsController.new
+ puts (a.app_set('autogeocodeaddress'))? true : false
+ 

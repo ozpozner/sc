@@ -1,0 +1,72 @@
+<% title "Radio" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @radio.title %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%= @radio.location_id %>
+</p>
+<p>
+  <strong>Mac:</strong>
+  <%= @radio.mac %>
+</p>
+<p>
+  <strong>Sn:</strong>
+  <%= @radio.sn %>
+</p>
+<p>
+  <strong>Ip:</strong>
+  <%= @radio.ip %>
+</p>
+<p>
+  <strong>Devtype:</strong>
+  <%= @radio.devtype %>
+</p>
+<p>
+  <strong>Hwver:</strong>
+  <%= @radio.hwver %>
+</p>
+<p>
+  <strong>Swver:</strong>
+  <%= @radio.swver %>
+</p>
+<p>
+  <strong>Contact:</strong>
+  <%= @radio.contact %>
+</p>
+<p>
+  <strong>Last Update:</strong>
+  <%= @radio.last_update %>
+</p>
+<p>
+  <strong>Installed:</strong>
+  <%= @radio.installed %>
+</p>
+<p>
+  <strong>Airlink:</strong>
+  <%= @radio.airlink_id %>
+</p>
+<p>
+  <strong>Lanlink:</strong>
+  <%= @radio.lanlink_id %>
+</p>
+<p>
+  <strong>Network:</strong>
+  <%= @radio.network_id %>
+</p>
+<p>
+  <strong>Sb Mask:</strong>
+  <%= @radio.sb_mask %>
+</p>
+<p>
+  <strong>Dgw:</strong>
+  <%= @radio.dgw %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_radio_path(@radio) %> |
+  <%= link_to "Destroy", @radio, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", radios_path %>
+</p>

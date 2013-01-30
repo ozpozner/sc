@@ -1,39 +1,56 @@
 
 <% provide(:title, 'All Locations') %>
 
-<%= form_tag locations_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search Near", :name => nil %>
-  </p>
-<% end %>
-
-
-<table>
-
-  <tr>
+<% if @current_location != nil then %>
+  <h3>Current Location</h3>
+  <table border="1" align="center"> 
+    <tr bgcolor="#cccccc" align="center">
+      <th>Address</th>
+      <th>Latitude</th>
+      <th>Longitude</th>
+    </tr> 
+    <tr align="center">
+        <td><%= @current_location.address %></td>
+        <td><%= @current_location.latitude %></td>
+        <td><%= @current_location.longitude %></td>
+     </tr> 
+  </table>
+  <% if  @exactly_at!=nil then %>
+    <H2>Right now in a known location: <%= link_to  @exactly_at.title,  @exactly_at %> [<%= (@current_location.distance_to(@exactly_at)*1000).round(2).to_s  %>m]</H2>
+  <% end %>
+<% end%>
+<h3>Known Locations</h3>
+<table border="1" align="center"> 
+  <tr bgcolor="#cccccc" align="center">
     <th>Title</th>
     <th>Address</th>
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Last Visit</th>
     <th>Radius</th>
-    <th>Site Type</th>
+    <% if @current_location != nil then %>
+      <th>Bearing</th>
+      <th>Distance</th>
+    <%end%>
+    <th>Actions</th>
   </tr>
   <% for location in @locations %>
-    <tr>
-      <td><%= location.title %></td>
+    <tr align="center">
+      <td><%= link_to location.title, location %></td>
       <td><%= location.address %></td>
-      <td><%= location.latitude %></td>
-      <td><%= location.longitude %></td>
-      <td><%= location.lastvisit %></td>
+      <td><%= (location.latitude!=nil)? location.latitude.round(6) : "n/a"  %></td>
+      <td><%= (location.longitude!=nil)? location.longitude.round(6) : "n/a" %></td>
+      <td><%= location.lastvisit.strftime("%d/%m/%Y@%I:%M%p") %></td>
       <td><%= location.radius %></td>
-      <td><%= location.sitetype %></td>
-      <td><%= link_to "Show", location %></td>
-      <td><%= link_to "Edit", edit_location_path(location) %></td>
-      <td><%= link_to "Destroy", location, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% if @current_location != nil then %>
+        <td><%= @current_location.bearing_to(location).round(1) %></td>
+        <td><%= @current_location.distance_to(location).round(3) %>Km</td>
+      <%end%>
+      <td><%= link_to "Show", location %> | 
+          <%= link_to "Edit", edit_location_path(location) %> |
+          <%= link_to "Destroy", location, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Location", new_location_path %></p>
+<p><%= link_to "New Location", new_location_path, class: "btn btn-small btn-primary"  %></p>

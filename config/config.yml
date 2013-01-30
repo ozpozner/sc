@@ -1,12 +1,24 @@
 development:
   perform_authentication: false
-  targethost: 10.0.1.1  
-  fpingpath: #{Rails.root}\utils
+  targethost: 10.0.1.1
+  fpingpath: 'c:\users\ozp\apps\sc\utils'
+  gpscommand: '"C:\Program Files (x86)\GPSBabel\gpsbabel.exe" -i garmin,get_posn -f usb:'
+  autogeocodeaddress: true
+  playerpath: '"C:\users\ozp\apps\sc\utils\VLC\"'
+  playerexec: 'vlc.exe'
+  automatedtests: true
+  wavfolder: 'c:\users\ozp\apps\sc\music\'
+  teststartwav: 'COMMUNICATOR_secondcall.wav'
+  defaultRadius: 0.001
+  root: 'c:\users\ozp\apps\sc\'
+  wifi_WindowsAPmac_cmd: 'netsh wlan show interfaces | find "BSSID"'
+  wifi_netsh_cmd: 'netsh wlan show interfaces'
+  wifihost: '10.0.0.121'
 test:
   perform_authentication: false
-
 production:
   perform_authentication: true
   username: admin
   password: netman
   targethost: 10.0.1.1 
+  gpscommand: '"C:\Program Files (x86)\GPSBabel\gpsbabel.exe" -i garmin,get_posn -f usb:'

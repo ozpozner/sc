@@ -1,0 +1,16 @@
+<%= form_for @setting do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :key %><br />
+    <%= f.text_field :key %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :mytype %><br />
+    <%= f.text_field :mytype %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

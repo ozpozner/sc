@@ -4,8 +4,32 @@ class LocationsController < ApplicationController
 
   def index
     @title = 'Locations Index'
+    @current_location =gpslocation()
+    @locations = Location.all
+    
+    if  @current_location != nil then 
+        @exactly_at=nil
+        @locations.each do |checklocation| 
+        if @current_location.distance_to(checklocation) < checklocation.radius then
+          @exactly_at =  checklocation
+          @playstartsound=@playstartsound||false  
+           if app_set('AutomatedTests') then
+            #TODO Exec Testes
+            if !@playstartsound then
+              command = app_set('playerpath')+app_set('playerexec')+' '++app_set('wavfolder')+app_set('teststartwav')
+              cmd=a.app_set('playerpath')+a.app_set('playerexec')+' '+a.app_set('wavfolder')+a.app_set('teststartwav')
+               pid = Process.spawn( command )
+            else
+              @playedstartsound=true
+            end  
+          end  
+          break;
+        end  #if
+      end #do
+      @playstartsound=false  if @exactly_at==nil 
+    end #nil
     if params[:search].present?
-      @locations = Location.near(params[:search], 50, :order => :distance)
+      @locations = Location.near(params[:search], 50, :order => :distance)||Location.all
     else
       @locations = Location.all
     end
@@ -21,16 +45,24 @@ class LocationsController < ApplicationController
     end 
   end
 
-  def new
-    @title = 'Showing location'
-    @location = Location.new
+  def gpslocation()
+    mygpslocation = Location.new
     line_id=0;
     gps1 = Hash.new
     gps2 = Hash.new
-    IO.popen('"C:\Program Files (x86)\GPSBabel\gpsbabel.exe" -i garmin,get_posn -f usb:') {
-    #File.open('c:\users\ozp\gps.txt') { 
-      |myfile| 
+    gps_error=true
+    IO.popen(app_set('gpscommand')) { |myfile| 
          while (line= myfile.gets) do 
+            if line.include?("[ERROR]") then
+               gps1=nil
+               gps2=nil
+               gps_error=true
+               mygpslocation.title = nil
+               myfile.close
+               break
+            else   
+              gps_error=false
+            end
             line_id+=1;
             if line_id==1 then
              line_a = line.split(/\s+/,5)
@@ -48,13 +80,27 @@ class LocationsController < ApplicationController
             end
           end #while
         } #io
-    if gps2!=nil then
-      @location.latitude =  (gps2[:lat]||0.0).to_f
-      @location.longitude =  (gps2[:lng]||0.0).to_f
+    if (gps2!=nil  && !gps_error) then
+      mygpslocation.latitude =  (gps2[:lat]||0.0).to_f
+      mygpslocation.longitude =  (gps2[:lng]||0.0).to_f
     end
-    if gps1!=nil then
-      @location.lastvisit = DateTime.parse( [gps1[:day], gps1[:month], gps1[:year], gps1[:time]].join(' '))||DateTime.now()
+    if (gps1!=nil && !gps_error) then
+      mygpslocation.lastvisit =  DateTime.parse( [gps1[:day], gps1[:month], gps1[:year], gps1[:time]].join(' '))||DateTime.now()
+    else
+      mygpslocation.lastvisit =  DateTime.now()
+      mygpslocation.title = 'Can\'t connect to gps'
     end
+    if gps_error then
+       return nil
+    else   
+       return mygpslocation
+    end  
+  end  
+
+  def new
+    @title = 'Showing location'
+    @location = gpslocation()||Location.new
+    @location.radius = app_set('defaultRadius')
   end
 
   def create

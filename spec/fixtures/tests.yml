@@ -1,0 +1,25 @@
+one:
+  title: MyString
+  start_time: 2013-01-29 00:16:56
+  end_time: 
+  locations_id: 1
+  actions_id: 1
+  last_run: 2013-01-29 00:16:56
+  next_run: 2013-01-29 00:16:56
+  trafic_gen_id: 1
+  location_based: false
+  time_based: false
+  auto_start: false
+
+two:
+  title: MyString
+  start_time: 2013-01-29 00:16:56
+  end_time: 
+  locations_id: 1
+  actions_id: 1
+  last_run: 2013-01-29 00:16:56
+  next_run: 2013-01-29 00:16:56
+  trafic_gen_id: 1
+  location_based: false
+  time_based: false
+  auto_start: false

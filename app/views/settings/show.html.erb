@@ -1,0 +1,20 @@
+<% title "Setting" %>
+
+<p>
+  <strong>Key:</strong>
+  <%= @setting.key %>
+</p>
+<p>
+  <strong>Value:</strong>
+  <%= @setting.value %>
+</p>
+<p>
+  <strong>Mytype:</strong>
+  <%= @setting.mytype %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_setting_path(@setting) %> |
+  <%= link_to "Destroy", @setting, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", settings_path %>
+</p>

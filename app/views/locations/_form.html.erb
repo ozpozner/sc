@@ -1,31 +1,31 @@
 <%= form_for @location do |f| %>
-  <%# = f.error_messages %>
+<%= f.error_messages %>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>
-  <table>
-  <tr>
+  <table border=1>
+  <tr align=center bgcolor="#cccccc">
     <th><%= f.label :address %></th>
     <th><%= f.label :latitude %></th>
     <th><%= f.label :longitude %></th>
   </tr>
-  <tr>
+  <tr align=center>
     <td><%= f.text_field :address %></td>
     <td><%= f.text_field :latitude %></td>
     <td><%= f.text_field :longitude %></td>
   </tr>  
   </table>
    <br />
-  <table>
-  <tr>
+  <table border=1>
+  <tr align=center bgcolor="#cccccc">
     <th><%= f.label :radius %></th>
     <th><%= f.label :sitetype %></th>
-    <th><%= f.label :lastvisit %></th>
+    <th><%= f.label "last Visit" %></th>
   </tr>
-  <tr>
+  <tr align=center>
     <td><%= f.text_field :radius %></td>
-    <td><%= f.text_field :radius %></td>
+    <td><%= f.text_field :sitetype %></td>
     <td><%= f.text_field :lastvisit %></td>
   </tr>  
   </table>

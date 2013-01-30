@@ -1,8 +1,9 @@
 SampleApp::Application.routes.draw do
+  resources :radios
+  resources :tests
+  resources :settings 
   resources :gps
-
   resources :locations
-
   resources :clocks
   resources :static_pages
   resources :users do
@@ -15,7 +16,10 @@ SampleApp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
       
   root to: 'static_pages#home'
-
+  
+  #map.init 'init', controller=>settings, :action=>'init'
+  match '/init',  to: 'settings#init'
+  match '/inventory',  to: 'radios#index'
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
   match '/signout', to: 'sessions#destroy', via: :delete

@@ -1,0 +1,9 @@
+one:
+  key: MyString
+  value: MyString
+  mytype: MyString
+
+two:
+  key: MyString
+  value: MyString
+  mytype: MyString

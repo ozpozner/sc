@@ -1,5 +1,15 @@
 require File.expand_path('../boot', __FILE__)
 
+# load app_config.yml  
+require 'yaml'  
+APP_CONFIG = YAML.load(File.read(File.expand_path('../config.yml', __FILE__)))  
+ 
+require 'rails/all'  
+
+#    require File.dirname(__FILE__) + '/../environment.rb'
+#    APP_CONFIG = YAML.load_file(File.dirname(__FILE__)+"/../config.yml")[Rails.env]
+
+
 # Pick the frameworks you want:
 require "active_record/railtie"
 require "action_controller/railtie"
@@ -61,5 +71,6 @@ module SampleApp
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
   end
 end

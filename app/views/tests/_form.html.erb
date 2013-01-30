@@ -1,0 +1,48 @@
+<%= form_for @test do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :start_time %><br />
+    <%= f.datetime_select :start_time %>
+  </p>
+  <p>
+    <%= f.label :end_time %><br />
+    <%= f.text_field :end_time %>
+  </p>
+  <p>
+    <%= f.label :locations_id %><br />
+    <%= f.number_field :locations_id %>
+  </p>
+  <p>
+    <%= f.label :actions_id %><br />
+    <%= f.number_field :actions_id %>
+  </p>
+  <p>
+    <%= f.label :last_run %><br />
+    <%= f.datetime_select :last_run %>
+  </p>
+  <p>
+    <%= f.label :next_run %><br />
+    <%= f.datetime_select :next_run %>
+  </p>
+  <p>
+    <%= f.label :trafic_gen_id %><br />
+    <%= f.number_field :trafic_gen_id %>
+  </p>
+  <p>
+    <%= f.label :location_based %><br />
+    <%= f.check_box :location_based %>
+  </p>
+  <p>
+    <%= f.label :time_based %><br />
+    <%= f.check_box :time_based %>
+  </p>
+  <p>
+    <%= f.label :auto_start %><br />
+    <%= f.check_box :auto_start %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

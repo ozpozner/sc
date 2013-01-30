@@ -1,0 +1,52 @@
+<% title "Test" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @test.title %>
+</p>
+<p>
+  <strong>Start Time:</strong>
+  <%= @test.start_time %>
+</p>
+<p>
+  <strong>End Time:</strong>
+  <%= @test.end_time %>
+</p>
+<p>
+  <strong>Locations:</strong>
+  <%= @test.locations_id %>
+</p>
+<p>
+  <strong>Actions:</strong>
+  <%= @test.actions_id %>
+</p>
+<p>
+  <strong>Last Run:</strong>
+  <%= @test.last_run %>
+</p>
+<p>
+  <strong>Next Run:</strong>
+  <%= @test.next_run %>
+</p>
+<p>
+  <strong>Trafic Gen:</strong>
+  <%= @test.trafic_gen_id %>
+</p>
+<p>
+  <strong>Location Based:</strong>
+  <%= @test.location_based %>
+</p>
+<p>
+  <strong>Time Based:</strong>
+  <%= @test.time_based %>
+</p>
+<p>
+  <strong>Auto Start:</strong>
+  <%= @test.auto_start %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_test_path(@test) %> |
+  <%= link_to "Destroy", @test, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", tests_path %>
+</p>

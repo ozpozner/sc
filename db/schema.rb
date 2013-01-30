@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127111914) do
+ActiveRecord::Schema.define(:version => 20130128222420) do
 
   create_table "gps", :force => true do |t|
     t.string   "latitude"
@@ -44,6 +44,27 @@ ActiveRecord::Schema.define(:version => 20130127111914) do
 
   add_index "microposts", ["user_id", "created_at"], :name => "index_microposts_on_user_id_and_created_at"
 
+  create_table "radios", :force => true do |t|
+    t.string   "title"
+    t.integer  "location_id"
+    t.string   "mac"
+    t.string   "sn"
+    t.string   "ip"
+    t.integer  "devtype"
+    t.string   "hwver"
+    t.string   "swver"
+    t.string   "contact"
+    t.datetime "last_update"
+    t.boolean  "installed"
+    t.integer  "airlink_id"
+    t.integer  "lanlink_id"
+    t.integer  "network_id"
+    t.string   "sb_mask"
+    t.string   "dgw"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -54,6 +75,30 @@ ActiveRecord::Schema.define(:version => 20130127111914) do
   add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
   add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
   add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "settings", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.string   "mytype"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "tests", :force => true do |t|
+    t.string   "title"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer  "locations_id"
+    t.integer  "actions_id"
+    t.datetime "last_run"
+    t.datetime "next_run"
+    t.integer  "trafic_gen_id"
+    t.boolean  "location_based"
+    t.boolean  "time_based"
+    t.boolean  "auto_start"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"

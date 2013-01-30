@@ -1,0 +1,35 @@
+one:
+  title: MyString
+  location_id: 1
+  mac: MyString
+  sn: MyString
+  ip: MyString
+  devtype: 1
+  hwver: MyString
+  swver: MyString
+  contact: MyString
+  last_update: 2013-01-29 00:24:20
+  installed: false
+  airlink_id: 1
+  lanlink_id: 1
+  network_id: 1
+  sb_mask: MyString
+  dgw: MyString
+
+two:
+  title: MyString
+  location_id: 1
+  mac: MyString
+  sn: MyString
+  ip: MyString
+  devtype: 1
+  hwver: MyString
+  swver: MyString
+  contact: MyString
+  last_update: 2013-01-29 00:24:20
+  installed: false
+  airlink_id: 1
+  lanlink_id: 1
+  network_id: 1
+  sb_mask: MyString
+  dgw: MyString

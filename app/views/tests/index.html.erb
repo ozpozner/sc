@@ -1,0 +1,37 @@
+<% title "Tests" %>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Locations</th>
+    <th>Actions</th>
+    <th>Last Run</th>
+    <th>Next Run</th>
+    <th>Trafic Gen</th>
+    <th>Location Based</th>
+    <th>Time Based</th>
+    <th>Auto Start</th>
+  </tr>
+  <% for test in @tests %>
+    <tr>
+      <td><%= test.title %></td>
+      <td><%= test.start_time %></td>
+      <td><%= test.end_time %></td>
+      <td><%= test.locations_id %></td>
+      <td><%= test.actions_id %></td>
+      <td><%= test.last_run %></td>
+      <td><%= test.next_run %></td>
+      <td><%= test.trafic_gen_id %></td>
+      <td><%= test.location_based %></td>
+      <td><%= test.time_based %></td>
+      <td><%= test.auto_start %></td>
+      <td><%= link_to "Show", test %></td>
+      <td><%= link_to "Edit", edit_test_path(test) %></td>
+      <td><%= link_to "Destroy", test, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Test", new_test_path %></p>
