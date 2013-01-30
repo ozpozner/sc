@@ -1,0 +1,23 @@
+<% title "Gps" %>
+
+<table>
+  <tr>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Datetime</th>
+    <th>Testid</th>
+  </tr>
+  <% for gps in @gps %>
+    <tr>
+      <td><%= gps.latitude %></td>
+      <td><%= gps.longitude %></td>
+      <td><%= gps.datetime %></td>
+      <td><%= gps.testid %></td>
+      <td><%= link_to "Show", gps %></td>
+      <td><%= link_to "Edit", edit_gps_path(gps) %></td>
+      <td><%= link_to "Destroy", gps, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Gps", new_gps_path %></p>

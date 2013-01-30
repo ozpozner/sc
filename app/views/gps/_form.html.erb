@@ -1,0 +1,20 @@
+<%= form_for @gps do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :latitude %><br />
+    <%= f.text_field :latitude %>
+  </p>
+  <p>
+    <%= f.label :longitude %><br />
+    <%= f.text_field :longitude %>
+  </p>
+  <p>
+    <%= f.label :datetime %><br />
+    <%= f.datetime_select :datetime %>
+  </p>
+  <p>
+    <%= f.label :testid %><br />
+    <%= f.number_field :testid %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

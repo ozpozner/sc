@@ -1,0 +1,12 @@
+development:
+  perform_authentication: false
+  targethost: 10.0.1.1  
+  fpingpath: #{Rails.root}\utils
+test:
+  perform_authentication: false
+
+production:
+  perform_authentication: true
+  username: admin
+  password: netman
+  targethost: 10.0.1.1 

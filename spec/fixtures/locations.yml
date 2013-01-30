@@ -1,0 +1,15 @@
+one:
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  lastvisit: 2013-01-27 09:42:32
+  radius: 1.5
+  type: 1
+
+two:
+  address: MyString
+  latitude: 1.5
+  longitude: 1.5
+  lastvisit: 2013-01-27 09:42:32
+  radius: 1.5
+  type: 1

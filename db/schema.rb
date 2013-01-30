@@ -11,7 +11,29 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308215846) do
+ActiveRecord::Schema.define(:version => 20130127111914) do
+
+  create_table "gps", :force => true do |t|
+    t.string   "latitude"
+    t.string   "longitude"
+    t.datetime "datetime"
+    t.integer  "testid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "locations", :force => true do |t|
+    t.string   "title",      :default => ""
+    t.string   "address",    :default => ""
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "lastvisit",  :default => '2013-01-01 00:00:00'
+    t.float    "radius",     :default => 2.0
+    t.integer  "sitetype",   :default => 1
+    t.string   "bearing",    :default => "N"
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+  end
 
   create_table "microposts", :force => true do |t|
     t.string   "content"

@@ -1,0 +1,11 @@
+one:
+  latitude: MyString
+  longitude: MyString
+  datetime: 2013-01-27 13:19:14
+  testid: 1
+
+two:
+  latitude: MyString
+  longitude: MyString
+  datetime: 2013-01-27 13:19:14
+  testid: 1

@@ -1,0 +1,12 @@
+<% title "Clock" %>
+
+<p>
+  <strong>Name:</strong>
+  <%= @clock.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_clock_path(@clock) %> |
+  <%= link_to "Destroy", @clock, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", clocks_path %>
+</p>
